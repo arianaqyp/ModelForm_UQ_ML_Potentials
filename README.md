@@ -1,0 +1,1 @@
+Code for paper: "Enhancing Robustness in Machine-Learning-Accelerated Molecular Dynamics: A Multi-Model Nonparametric Probabilistic Approach"

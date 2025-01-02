@@ -1,0 +1,13 @@
+/archive/
+/ModelForm_UQ/archive/
+/ModelForm_UQ/
+/NEP-ENSEMBLE/
+
+notes.txt
+
+
+/utils/__pycache__
+*.cfg
+*.out
+*.png
+*.pyc
