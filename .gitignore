@@ -1,12 +1,24 @@
-/archive/
+## ModelForm_UQ
 /ModelForm_UQ/archive/
-/ModelForm_UQ/
+# /ModelForm_UQ/
+
+ModelForm_UQ/data/
+ModelForm_UQ/data_SPECIFY_NR_randomization/
+ModelForm_UQ/data_SPECIFY_ROM/
+ModelForm_UQ/fom_data_15ps/
+ModelForm_UQ/Rand15ps_eps1e-6/
+ModelForm_UQ/rom_data_15ps/
+
+
+
+
+## NEP-ENSEMBLE
 /NEP-ENSEMBLE/
 
+## Misc
+/archive/
 notes.txt
-
-
-/utils/__pycache__
+/utils/__pycache__/
 *.cfg
 *.out
 *.png
