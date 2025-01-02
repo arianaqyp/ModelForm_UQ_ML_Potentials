@@ -1,0 +1,8 @@
+type         3 Na Sb Se
+version      3
+cutoff       7.5 5
+n_max        8 6
+l_max        4 2
+neuron       50
+batch        1000
+generation   100000

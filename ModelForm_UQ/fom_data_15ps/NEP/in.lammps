@@ -1,0 +1,44 @@
+units           metal                       #Use this units for DynaPhoPy
+atom_style      atomic
+
+boundary        p p p                       #Periodical conditions
+
+read_data       ../../../data/structure_SbSe.in           #Structure file
+
+#potential
+pair_style      nep nep.txt                 #trained potential
+pair_coeff      * *    #Empirical potential
+
+variable        t equal 300                 #Define the temperature
+
+neighbor        2 bin
+neigh_modify    delay 0
+
+timestep        0.002                       #Define time step
+
+thermo_style    custom time step temp pe ke vol etotal press
+thermo          100
+
+velocity        all create $t 3627941 dist gaussian mom yes
+velocity        all scale $t
+ 
+fix             1 all nvt temp $t $t 0.1 #Canonical ensemble
+
+dump            1 all custom 1 trajectory.lammpstrj id xu yu zu vx vy vz
+dump_modify     1 sort id
+dump_modify     1 format line "%d %.16f %.16f %.16f %.16f %.16f %.16f"
+
+group           na id 1:376
+group           sb id 377:504
+group           se id 505:1016
+
+compute         msdNa na msd
+compute         msdSb sb msd
+compute         msdSe se msd
+
+fix             msdNafix na ave/time 10 1 10 c_msdNa[1] c_msdNa[2] c_msdNa[3] c_msdNa[4] file msdNa.data
+fix             msdSbfix sb ave/time 10 1 10 c_msdSb[1] c_msdSb[2] c_msdSb[3] c_msdSb[4] file msdSb.data
+fix             msdSefix se ave/time 10 1 10 c_msdSe[1] c_msdSe[2] c_msdSe[3] c_msdSe[4] file msdSe.data
+
+run             7500                      #Number of timesteps
+
